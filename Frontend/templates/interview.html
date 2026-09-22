@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice & Text Interview Room - Aptivox AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <span>⚡ Aptivox AI</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/interview" class="nav-link active">🎙️ AI Interview Room</a></li>
+                <li><a href="/practice" class="nav-link">📚 Question Bank</a></li>
+                <li><a href="/dashboard" class="nav-link">📊 Analytics</a></li>
+                <li><a href="/resume-analyzer" class="nav-link">📄 Resume Matcher</a></li>
+            </ul>
+            <div id="user-profile-btn" class="user-profile-btn">
+                <div class="avatar">A</div>
+                <span>Candidate</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 30px; padding-bottom: 60px;">
+        <!-- Back Navigation Button -->
+        <div style="margin-bottom: 20px;">
+            <a href="/" class="btn-back">← Back to Home</a>
+        </div>
+
+        <!-- STEP 1: INTERVIEW SETUP CARD -->
+        <div id="setup-card" class="card" style="max-width: 680px; margin: 20px auto;">
+            <div style="text-align:center; margin-bottom: 24px;">
+                <h2 style="font-size: 2rem;">Configure AI Mock Interview</h2>
+                <p>Select your target role, difficulty, and domain to launch a customized session.</p>
+            </div>
+
+            <form id="start-interview-form">
+                <div class="form-group">
+                    <label class="form-label">Target Role / Specialization</label>
+                    <select id="select-role" class="form-select">
+                        <option value="Full Stack Engineer">Full Stack Engineer</option>
+                        <option value="Frontend Developer (HTML / CSS / JS)">Frontend Developer (HTML / CSS / JS)</option>
+                        <option value="Python Engineer">Python Engineer</option>
+                        <option value="Java Enterprise Developer">Java Enterprise Developer</option>
+                        <option value="System Design Architect">System Design Architect</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Interview Domain & Category</label>
+                    <select id="select-category" class="form-select">
+                        <option value="HTML">HTML (Web Fundamentals)</option>
+                        <option value="CSS">CSS (Styling & Box Model)</option>
+                        <option value="JavaScript">JavaScript (Core & DOM)</option>
+                        <option value="Java">Java (OOP & Core Principles)</option>
+                        <option value="Python">Python (Basics & Data Types)</option>
+                        <option value="Technical" selected>General Technical & Web Fundamentals</option>
+                        <option value="System Design">System Design (Basic Architecture)</option>
+                        <option value="Behavioral">Behavioral (STAR Method)</option>
+                    </select>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                    <div class="form-group">
+                        <label class="form-label">Difficulty Level</label>
+                        <select id="select-difficulty" class="form-select">
+                            <option value="Junior">Junior / Associate</option>
+                            <option value="Mid">Mid-Level</option>
+                            <option value="Senior" selected>Senior / Staff</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Questions Count</label>
+                        <select id="select-count" class="form-select">
+                            <option value="3" selected>3 Questions (Quick Sprint)</option>
+                            <option value="5">5 Questions (Standard Round)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%; font-size:1.05rem; margin-top:10px;">
+                    🚀 Enter AI Interview Room
+                </button>
+            </form>
+        </div>
+
+
+        <!-- STEP 2: ACTIVE LIVE INTERVIEW PORTAL (Hidden initially) -->
+        <div id="active-interview-area" style="display:none;">
+            
+            <!-- Session Status Header -->
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; background:var(--bg-card); padding:16px 24px; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+                <div>
+                    <span style="color:var(--text-muted); font-size:0.9rem;">Question Progress:</span>
+                    <strong style="color:#fff; font-size:1.1rem; margin-left:8px;"><span id="current-q-num">1</span> of <span id="total-q-num">3</span></strong>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:20px;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="color:var(--secondary);">⏱️ Duration:</span>
+                        <strong id="interview-timer" style="font-family:'JetBrains Mono', monospace; font-size:1.1rem; color:#fff;">00:00</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div style="width:100%; height:6px; background:rgba(255,255,255,0.08); border-radius:3px; margin-bottom:24px; overflow:hidden;">
+                <div id="progress-bar-fill" style="width:33%; height:100%; background:linear-gradient(90deg, var(--primary), var(--secondary)); transition: width 0.4s ease;"></div>
+            </div>
+
+            <!-- Main Layout -->
+            <div class="interview-layout">
+                <div>
+                    <!-- Question Prompt Box -->
+                    <div class="question-box">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span style="font-size:0.8rem; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:1px;">Question Prompt</span>
+                            <button id="speak-question-btn" class="btn btn-secondary" style="padding:4px 10px; font-size:0.75rem;">
+                                🔊 Replay Voice
+                            </button>
+                        </div>
+                        <p id="question-text-display" style="color:#fff; font-size:1.2rem; font-weight:600; line-height:1.4;"></p>
+                        <div id="question-hint-box" style="margin-top:12px; font-size:0.85rem; color:var(--text-dim);"></div>
+                    </div>
+
+                    <!-- User Answer Box -->
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <label class="form-label" style="margin:0;">Your Spoken / Typed Response</label>
+                            <div id="recording-indicator" class="recording-indicator" style="display:none;">
+                                <div class="dot-pulse"></div> Live Microphone Active...
+                            </div>
+                        </div>
+
+                        <textarea id="user-answer-input" class="answer-textarea" placeholder="Type your answer here or click 'Speak Answer' to use real-time Speech-to-Text microphone recording..."></textarea>
+
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
+                            <button id="mic-toggle-btn" class="btn btn-secondary">
+                                🎙️ Speak Answer
+                            </button>
+
+                            <button id="submit-answer-btn" class="btn btn-primary" style="padding:12px 28px;">
+                                ⚡ Submit & Analyze Answer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Session Tips Side Panel -->
+                <div>
+                    <div class="card" style="margin-bottom:20px;">
+                        <h4 style="margin-bottom:12px; color:var(--secondary);">💡 STAR Strategy Guide</h4>
+                        <p style="font-size:0.85rem; margin-bottom:10px;">Structure behavioral responses clearly:</p>
+                        <ul style="font-size:0.85rem; color:var(--text-muted); padding-left:18px; line-height:1.8;">
+                            <li><strong>S</strong>ituation: Set the scene & background</li>
+                            <li><strong>T</strong>ask: Define your specific responsibility</li>
+                            <li><strong>A</strong>ction: Detail your steps & technology</li>
+                            <li><strong>R</strong>esult: Highlight metrics & impact</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h4 style="margin-bottom:12px; color:var(--accent);">🎯 Evaluation Criteria</h4>
+                        <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.7;">
+                            Our AI evaluates technical depth, algorithmic efficiency, architectural trade-offs, and communication clarity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- STEP 3: COMPLETED SESSION SUMMARY CARD (Hidden initially) -->
+        <div id="completed-summary-card" class="card" style="max-width: 600px; margin: 40px auto; text-align: center; display: none;">
+            <div class="score-badge-circle">🎉</div>
+            <h2 style="font-size: 2.2rem; margin-bottom: 12px;">Interview Completed!</h2>
+            <p>Your session responses have been evaluated and recorded into your performance analytics dashboard.</p>
+            
+            <div style="background:rgba(15,23,42,0.8); border:1px solid var(--border-glow); padding:20px; border-radius:var(--radius-md); margin: 24px 0;">
+                <span style="font-size:0.9rem; color:var(--text-muted); text-transform:uppercase;">Overall Session Score</span>
+                <div id="final-score-display" style="font-size: 3rem; font-weight: 800; color: var(--success); margin-top:4px;">8.8 / 10</div>
+            </div>
+
+            <div style="display:flex; justify-content:center; gap:16px;">
+                <a href="/dashboard" class="btn btn-primary">📊 View Dashboard & History</a>
+                <a href="/interview" class="btn btn-secondary">🔄 Start Another Round</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- OPEN AI EVALUATION FEEDBACK MODAL -->
+    <div id="feedback-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 650px; border: 1px solid var(--border-glow); box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+            <!-- Modal Title Bar -->
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:14px; margin-bottom:20px;">
+                <h3 style="margin:0; font-size:1.35rem; color:#fff; display:flex; align-items:center; gap:8px;">
+                    <span>📊</span> Open AI Evaluation Report
+                </h3>
+                <button id="modal-close-x" style="background:transparent; border:none; color:var(--text-muted); font-size:1.5rem; cursor:pointer; padding:0 6px;">&times;</button>
+            </div>
+
+            <!-- Score Banner -->
+            <div style="text-align:center; margin-bottom: 22px;">
+                <div id="modal-score-val" class="score-badge-circle" style="font-size:2.8rem; font-weight:800; color:#38bdf8; text-shadow:0 0 20px rgba(56,189,248,0.5); margin-bottom:6px;">8.5 / 10</div>
+                <h3 id="modal-status-tag" style="color:#38bdf8; font-size:1.15rem; margin-bottom:4px; font-weight:700;">Excellent Response</h3>
+            </div>
+
+            <!-- Explicit Wrong Answer Banner -->
+            <div id="modal-wrong-banner" class="status-wrong-banner" style="display:none; margin-bottom:16px;">
+                <div class="status-wrong-title" style="color:#fca5a5; font-weight:700; font-size:1.05rem;">⚠️ Your answer is wrong (0 / 10)</div>
+                <div id="modal-wrong-rationale" class="status-wrong-text" style="color:#fee2e2; font-size:0.9rem; margin-top:4px;">Your response lacks key concepts.</div>
+            </div>
+
+            <!-- Correction & Key Concepts Box -->
+            <div id="modal-correction-container" style="margin-bottom:20px; background:rgba(239,68,68,0.1); padding:16px; border-radius:var(--radius-sm); border-left:3px solid var(--danger); display:none;">
+                <h4 style="color:#f87171; margin-bottom:6px; font-size:0.95rem;">🛠️ AI Correction & Solution Blueprint</h4>
+                <p id="modal-correction-text" style="font-size:0.92rem; color:#f8fafc; line-height:1.6;"></p>
+            </div>
+
+            <!-- Strengths List (High-contrast bright visible points) -->
+            <div style="margin-bottom:18px;">
+                <h4 style="color:#4ade80; margin-bottom:8px; font-size:0.95rem; font-weight:700;">✅ Key Points & Strengths</h4>
+                <ul id="modal-strengths-list" style="font-size:0.95rem; color:#f8fafc; font-weight:500; padding-left:20px; line-height:1.7;"></ul>
+            </div>
+
+            <!-- Gaps List -->
+            <div style="margin-bottom:18px;">
+                <h4 style="color:#fbbf24; margin-bottom:8px; font-size:0.95rem; font-weight:700;">📌 Growth Areas & Gaps</h4>
+                <ul id="modal-gaps-list" style="font-size:0.95rem; color:#f8fafc; font-weight:500; padding-left:20px; line-height:1.7;"></ul>
+            </div>
+
+            <div style="margin-bottom:18px; background:rgba(255,255,255,0.04); padding:16px; border-radius:var(--radius-sm); border-left:3px solid var(--primary);">
+                <h4 style="color:#818cf8; margin-bottom:6px; font-size:0.95rem; font-weight:700;">⭐ Model Ideal Answer</h4>
+                <p id="modal-sample-answer" style="font-size:0.92rem; color:#f8fafc; line-height:1.6;"></p>
+            </div>
+
+            <div style="margin-bottom:24px; background:rgba(6,182,212,0.06); padding:14px; border-radius:var(--radius-sm); border-left:3px solid var(--secondary);">
+                <h4 style="color:#38bdf8; margin-bottom:4px; font-size:0.92rem; font-weight:700;">❓ Suggested Follow-Up Question</h4>
+                <p id="modal-followup" style="font-size:0.88rem; color:#e2e8f0; line-height:1.5;"></p>
+            </div>
+
+            <!-- Navigation Buttons: Back and Proceed to Next Question -->
+            <div style="display:grid; grid-template-columns: 1fr 1.6fr; gap:12px;">
+                <button id="modal-back-btn" class="btn btn-secondary" style="font-size:0.95rem; justify-content:center;">
+                    ← Back to Question
+                </button>
+                <button id="next-question-btn" class="btn btn-primary" style="font-size:0.95rem; justify-content:center;">
+                    Proceed to Next Question ➡️
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+</body>
+</html>

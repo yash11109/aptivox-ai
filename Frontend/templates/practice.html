@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Hub & Question Bank - Aptivox AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <span>⚡ Aptivox AI</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/interview" class="nav-link">🎙️ AI Interview Room</a></li>
+                <li><a href="/practice" class="nav-link active">📚 Question Bank</a></li>
+                <li><a href="/dashboard" class="nav-link">📊 Analytics</a></li>
+                <li><a href="/resume-analyzer" class="nav-link">📄 Resume Matcher</a></li>
+            </ul>
+            <div id="user-profile-btn" class="user-profile-btn">
+                <div class="avatar">A</div>
+                <span>Alex Mercer</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 30px; padding-bottom: 80px;">
+        <!-- Back Navigation Button -->
+        <div style="margin-bottom: 20px;">
+            <a href="/" class="btn-back">← Back to Home</a>
+        </div>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 30px;">
+            <div>
+                <h2>Question Practice Repository</h2>
+                <p>Browse curated basic questions across languages with clear model answers and definitions.</p>
+            </div>
+            <a href="/interview" class="btn btn-primary">🎙️ Launch Live Room</a>
+        </div>
+
+        <!-- Filter Controls Bar -->
+        <div class="card" style="margin-bottom: 28px; padding: 20px;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                <div>
+                    <label class="form-label">Filter Category</label>
+                    <select id="filter-category" class="form-select">
+                        <option value="All">All Categories</option>
+                        <option value="Technical">Technical & Coding</option>
+                        <option value="System Design">System Design</option>
+                        <option value="Behavioral">Behavioral (STAR)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="form-label">Filter Domain / Technology</label>
+                    <select id="filter-domain" class="form-select">
+                        <option value="All">All Technical Domains</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Java">Java</option>
+                        <option value="Python">Python</option>
+                        <option value="Web Fundamentals">Web Fundamentals</option>
+                        <option value="Leadership & Soft Skills">Leadership & Soft Skills</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Questions List Container -->
+        <div id="questions-list-container">
+            <!-- Dynamically loaded via practice.js -->
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/practice.js') }}"></script>
+</body>
+</html>

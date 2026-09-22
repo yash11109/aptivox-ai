@@ -1,0 +1,352 @@
+{
+    "users": [
+        {
+            "id": "user_demo",
+            "username": "demouser",
+            "email": "demo@interview.ai",
+            "password": "password123",
+            "full_name": "Alex Mercer",
+            "target_role": "Full Stack Engineer",
+            "target_level": "Senior"
+        },
+        {
+            "email": "yash123@gmail.com",
+            "password": "12345",
+            "full_name": "yash",
+            "target_role": "Full Stack Engineer",
+            "target_level": "Mid-Senior",
+            "created_at": 1788598055,
+            "id": "0f99d939-1fbf-416d-8875-61a662779739"
+        },
+        {
+            "email": "yash@gmail.com",
+            "password": "123456",
+            "full_name": "yash",
+            "target_role": "Full Stack Engineer",
+            "target_level": "Mid-Senior",
+            "created_at": 1788698443,
+            "id": "b99e5325-44e1-44a4-83b4-c17fd7407588"
+        },
+        {
+            "email": "yash1234@gmail.com",
+            "password": "123456",
+            "full_name": "yash",
+            "target_role": "Full Stack Engineer",
+            "target_level": "Mid-Senior",
+            "created_at": 1788698853,
+            "id": "3647b8f2-6773-4850-9733-15ff5a9bb65f"
+        },
+        {
+            "email": "yash12@gmail.com",
+            "password": "123456",
+            "full_name": "yash",
+            "target_role": "Full Stack Engineer",
+            "target_level": "Mid-Senior",
+            "created_at": 1788699892,
+            "id": "3f919d41-e69a-4417-8b00-3cd817e82ff6"
+        }
+    ],
+    "interviews": [],
+    "questions": [
+        {
+            "id": "q_html_1",
+            "category": "Technical",
+            "domain": "HTML",
+            "difficulty": "Junior",
+            "question": "What is HTML?",
+            "hint": "Explain what the acronym stands for, its primary purpose in web development, and how it provides structure to web pages.",
+            "star_guide": "S: Starting web development. T: Explain web fundamentals. A: Defined HyperText Markup Language as the foundational markup that structures web documents using elements and tags. R: Solid foundation for web development.",
+            "sample_answer": "HTML stands for HyperText Markup Language. It is the standard markup language used to create and structure web pages on the internet. It uses elements and tags (such as headings, paragraphs, links, and images) to tell web browsers how to display text and media content."
+        },
+        {
+            "id": "q_html_2",
+            "category": "Technical",
+            "domain": "HTML",
+            "difficulty": "Junior",
+            "question": "What is the difference between an HTML tag and an HTML element?",
+            "hint": "Compare opening/closing tags like <p> and </p> with the full element including content.",
+            "star_guide": "S: Code review on semantic markup. T: Explain terminology. A: Clarified that tags are syntax markers and elements are the complete unit including tags, attributes, and inner content. R: Improved developer terminology.",
+            "sample_answer": "An HTML tag is the syntax marker enclosed in angle brackets used to mark the start or end of an element (such as <p> and </p>). An HTML element is the complete unit, consisting of the opening tag, any attributes, the enclosed content, and the closing tag."
+        },
+        {
+            "id": "q_html_3",
+            "category": "Technical",
+            "domain": "HTML",
+            "difficulty": "Junior",
+            "question": "What are HTML attributes and why are they used?",
+            "hint": "Mention href, src, id, class, and their placement inside opening tags.",
+            "star_guide": "S: Configuring element behavior. T: Apply attributes to HTML tags. A: Used attributes like class, id, and href to configure links and styling hooks. R: Seamless integration between HTML, CSS, and JS.",
+            "sample_answer": "HTML attributes provide additional information and properties to HTML elements. They are placed inside the opening tag as name-value pairs (e.g., class='card', href='https://...', or id='header') to specify styling hooks, image sources, or behavioral metadata."
+        },
+        {
+            "id": "q_html_4",
+            "category": "Technical",
+            "domain": "HTML",
+            "difficulty": "Junior",
+            "question": "What is the <!DOCTYPE> declaration in HTML?",
+            "hint": "Explain standard rendering mode vs quirks mode.",
+            "star_guide": "S: Fixing browser rendering discrepancies. T: Ensure standard HTML5 rendering. A: Added <!DOCTYPE html> at the top of the document. R: Consistent rendering across all modern browsers.",
+            "sample_answer": "<!DOCTYPE html> is an instruction placed at the very top of an HTML document that informs the web browser which version of HTML is being used (HTML5). It ensures the browser parses and renders the page in standard compliance mode instead of quirks mode."
+        },
+        {
+            "id": "q_html_5",
+            "category": "Technical",
+            "domain": "HTML",
+            "difficulty": "Junior",
+            "question": "What are void or self-closing elements in HTML?",
+            "hint": "Give examples like <img>, <br>, <hr>, and <input> that do not have closing tags.",
+            "star_guide": "S: Writing clean HTML markup. T: Identify elements without inner content. A: Correctly applied void elements like <br> and <img> without closing tags. R: 100% valid HTML markup.",
+            "sample_answer": "Void or self-closing elements are HTML elements that do not contain any closing tags or inner content because they cannot hold text or child elements. Common examples include <img>, <input>, <br>, <hr>, and <meta>."
+        },
+        {
+            "id": "q_css_1",
+            "category": "Technical",
+            "domain": "CSS",
+            "difficulty": "Junior",
+            "question": "What is CSS?",
+            "hint": "Explain what CSS stands for and its role in styling colors, layouts, typography, and visual presentation.",
+            "star_guide": "S: Styling a web application. T: Separate structure from design. A: Implemented CSS stylesheets for visual styling, responsive layouts, and typography. R: Created an attractive, modern user interface.",
+            "sample_answer": "CSS stands for Cascading Style Sheets. It is a stylesheet language used to describe the visual presentation and layout of an HTML document. CSS controls colors, fonts, margins, layouts, animations, and responsive designs across different device screens."
+        },
+        {
+            "id": "q_css_2",
+            "category": "Technical",
+            "domain": "CSS",
+            "difficulty": "Junior",
+            "question": "What is the CSS Box Model and what are its four parts?",
+            "hint": "Mention Content, Padding, Border, and Margin from inside to outside.",
+            "star_guide": "S: Fixing spacing and layout overflow. T: Master component sizing. A: Applied the CSS box model correctly using box-sizing: border-box. R: Predictable layout sizing across all components.",
+            "sample_answer": "The CSS Box Model is a core concept that defines how every HTML element is represented as a rectangular box. It consists of four layers from inside out: 1) Content (the actual text or media), 2) Padding (transparent area around content), 3) Border (frame surrounding padding), and 4) Margin (clearance outside border)."
+        },
+        {
+            "id": "q_css_3",
+            "category": "Technical",
+            "domain": "CSS",
+            "difficulty": "Junior",
+            "question": "What is the difference between an ID and a Class selector in CSS?",
+            "hint": "Explain uniqueness (# vs .) and specificity rules.",
+            "star_guide": "S: Refactoring CSS for reusability. T: Organize selectors cleanly. A: Used classes for reusable design components and reserved IDs for unique page sections. R: Eliminated CSS specificity conflicts.",
+            "sample_answer": "An ID selector (prefixed with #) is unique and should only be used on a single element per page, carrying higher specificity. A Class selector (prefixed with .) can be applied to multiple elements, making it ideal for reusable component styling."
+        },
+        {
+            "id": "q_css_4",
+            "category": "Technical",
+            "domain": "CSS",
+            "difficulty": "Junior",
+            "question": "What are the three ways to add CSS to an HTML document?",
+            "hint": "Inline CSS, Internal CSS (<style>), External CSS (<link>).",
+            "star_guide": "S: Setting up frontend architecture. T: Organize styling for maintainability. A: Implemented external stylesheets linked via the <head> tag. R: Optimal browser caching and clean code separation.",
+            "sample_answer": "The three ways to apply CSS are: 1) Inline CSS using the 'style' attribute directly on an HTML tag, 2) Internal CSS inside a <style> tag in the document <head>, and 3) External CSS in a separate .css file linked via a <link rel='stylesheet'> tag, which is the recommended practice."
+        },
+        {
+            "id": "q_css_5",
+            "category": "Technical",
+            "domain": "CSS",
+            "difficulty": "Junior",
+            "question": "What is CSS Flexbox and why is it used?",
+            "hint": "One-dimensional layout system for rows or columns, centering, and distributing space.",
+            "star_guide": "S: Designing a responsive navbar and card grid. T: Align items dynamically. A: Applied display: flex with justify-content and align-items. R: Perfectly centered and aligned elements without floats.",
+            "sample_answer": "CSS Flexbox (Flexible Box Layout) is a 1-dimensional CSS layout model designed to distribute space and align items along a horizontal row or vertical column, easily handling dynamic sizing and centering of elements."
+        },
+        {
+            "id": "q_js_1",
+            "category": "Technical",
+            "domain": "JavaScript",
+            "difficulty": "Junior",
+            "question": "What is JavaScript?",
+            "hint": "Client-side scripting language, interactivity, running in web browsers and Node.js.",
+            "star_guide": "S: Building a dynamic web page. T: Add user interactivity. A: Wrote JavaScript to handle click events, form validation, and DOM updates. R: Responsive and engaging user experience.",
+            "sample_answer": "JavaScript is a lightweight, dynamic, interpreted programming language widely used to make web pages interactive and dynamic. It runs directly in the browser to handle user events, modify HTML content, validate forms, and communicate with backend servers via APIs."
+        },
+        {
+            "id": "q_js_2",
+            "category": "Technical",
+            "domain": "JavaScript",
+            "difficulty": "Junior",
+            "question": "What is the difference between var, let, and const in JavaScript?",
+            "hint": "Function scope vs block scope, and reassignability.",
+            "star_guide": "S: Writing modern clean JavaScript. T: Prevent variable hoisting and scope leak bugs. A: Used const for constants and let for mutable variables, avoiding var. R: Bug-free scoped execution.",
+            "sample_answer": "'var' is function-scoped and can be re-declared and hoisted. 'let' is block-scoped and allows reassignment but not re-declaration within the same scope. 'const' is block-scoped and cannot be reassigned after its initial declaration."
+        },
+        {
+            "id": "q_js_3",
+            "category": "Technical",
+            "domain": "JavaScript",
+            "difficulty": "Junior",
+            "question": "What is the DOM (Document Object Model) in JavaScript?",
+            "hint": "Tree structure representing HTML page elements that JavaScript can inspect and manipulate.",
+            "star_guide": "S: Implementing dynamic UI updates. T: Interact with web page elements programmatically. A: Used DOM methods like querySelector and addEventListener. R: Real-time UI updates without page reloads.",
+            "sample_answer": "The DOM (Document Object Model) is an API and programming interface that represents an HTML document as a tree structure of objects. JavaScript uses the DOM to read, create, modify, or delete HTML elements, attributes, and styles dynamically."
+        },
+        {
+            "id": "q_js_4",
+            "category": "Technical",
+            "domain": "JavaScript",
+            "difficulty": "Junior",
+            "question": "What is the difference between == and === in JavaScript?",
+            "hint": "Loose equality with type coercion vs strict equality without type coercion.",
+            "star_guide": "S: Comparing user inputs in form validation. T: Eliminate type coercion errors. A: Standardized all comparisons to strict equality ===. R: Reliable boolean logic throughout the codebase.",
+            "sample_answer": "The == operator (loose equality) compares two values for equality after performing automatic type conversion (type coercion). The === operator (strict equality) compares both value and data type without any type conversion."
+        },
+        {
+            "id": "q_py_1",
+            "category": "Technical",
+            "domain": "Python",
+            "difficulty": "Junior",
+            "question": "What is Python?",
+            "hint": "High-level, interpreted, dynamically typed, clean readable syntax, and general-purpose nature.",
+            "star_guide": "S: Selecting language for backend and automation. T: Rapid prototyping and clean code. A: Chose Python for its readable syntax and rich ecosystem. R: Delivered reliable APIs quickly.",
+            "sample_answer": "Python is a high-level, interpreted, general-purpose programming language known for its clear, readable syntax and versatility. It supports multiple programming paradigms (procedural, object-oriented, and functional) and is widely used in web development, data science, AI, and automation."
+        },
+        {
+            "id": "q_py_2",
+            "category": "Technical",
+            "domain": "Python",
+            "difficulty": "Junior",
+            "question": "What is the difference between a List and a Tuple in Python?",
+            "hint": "Mutability (can modify vs cannot modify) and syntax ([] vs ()).",
+            "star_guide": "S: Designing data structures. T: Choose appropriate collection types. A: Used immutable tuples for fixed coordinates/keys and lists for dynamic collections. R: Memory efficiency and accidental modification prevention.",
+            "sample_answer": "A List in Python is mutable (its elements can be modified, added, or removed) and defined using square brackets []. A Tuple is immutable (its elements cannot be changed once created) and defined using parentheses ()."
+        },
+        {
+            "id": "q_py_3",
+            "category": "Technical",
+            "domain": "Python",
+            "difficulty": "Junior",
+            "question": "What are common built-in data types in Python?",
+            "hint": "int, float, str, bool, list, tuple, dict, set.",
+            "star_guide": "S: Parsing API inputs. T: Handle variable types appropriately. A: Handled primitive and composite Python data types with type checking. R: Robust input processing.",
+            "sample_answer": "Python's common built-in data types include Numeric types (int, float), Text (str), Boolean (bool), Sequence types (list, tuple, range), Mapping type (dict), and Set types (set, frozenset)."
+        },
+        {
+            "id": "q_py_4",
+            "category": "Technical",
+            "domain": "Python",
+            "difficulty": "Junior",
+            "question": "What is a function in Python and how do you define one?",
+            "hint": "def keyword, function name, parameters, colon, indentation, and return statement.",
+            "star_guide": "S: Refactoring repetitive code. T: Modularize logic into functions. A: Defined modular functions with def, docstrings, and return statements. R: Highly readable and reusable codebase.",
+            "sample_answer": "A function in Python is a reusable block of organized code designed to perform a single, related action. It is defined using the 'def' keyword, followed by the function name, parentheses for parameters, a colon, and an indented code block, optionally returning a value with 'return'."
+        },
+        {
+            "id": "q_java_1",
+            "category": "Technical",
+            "domain": "Java",
+            "difficulty": "Junior",
+            "question": "What is Java?",
+            "hint": "High-level, class-based, object-oriented, 'Write Once, Run Anywhere' (WORA), JVM.",
+            "star_guide": "S: Developing enterprise backend services. T: Leverage platform independence. A: Built services in Java compiled to bytecode running on JVM. R: Reliable cross-platform enterprise software.",
+            "sample_answer": "Java is a high-level, class-based, object-oriented programming language designed for portability. It follows the 'Write Once, Run Anywhere' (WORA) principle, meaning compiled Java bytecode can run on any platform equipped with a Java Virtual Machine (JVM)."
+        },
+        {
+            "id": "q_java_2",
+            "category": "Technical",
+            "domain": "Java",
+            "difficulty": "Junior",
+            "question": "What are the four main principles of Object-Oriented Programming (OOP) in Java?",
+            "hint": "Encapsulation, Inheritance, Polymorphism, Abstraction.",
+            "star_guide": "S: Designing domain classes. T: Apply OOP patterns cleanly. A: Implemented encapsulation with private fields, inheritance for shared logic, and polymorphism for service interfaces. R: Clean, decoupled code structure.",
+            "sample_answer": "The four main principles of OOP in Java are: 1) Encapsulation (bundling data and methods together and restricting direct field access), 2) Inheritance (allowing a class to inherit fields and methods from a parent class), 3) Polymorphism (enabling methods to take different forms through overloading and overriding), and 4) Abstraction (hiding complex implementation details and showing only essential features)."
+        },
+        {
+            "id": "q_java_3",
+            "category": "Technical",
+            "domain": "Java",
+            "difficulty": "Junior",
+            "question": "What is the difference between JDK, JRE, and JVM in Java?",
+            "hint": "JDK = Development Kit, JRE = Runtime Environment, JVM = Virtual Machine.",
+            "star_guide": "S: Setting up CI/CD environments. T: Configure proper Java dependencies. A: Used JDK on build machines to compile code and JRE on production containers to run bytecode. R: Optimized container performance.",
+            "sample_answer": "JVM (Java Virtual Machine) executes Java bytecode. JRE (Java Runtime Environment) provides the JVM plus core libraries needed to run Java programs. JDK (Java Development Kit) is the complete development package containing the JRE, compiler (javac), and developer tools."
+        },
+        {
+            "id": "q_java_4",
+            "category": "Technical",
+            "domain": "Java",
+            "difficulty": "Junior",
+            "question": "What is the difference between == and .equals() in Java?",
+            "hint": "Reference comparison (memory address) vs value/content comparison.",
+            "star_guide": "S: Fixing string comparison bugs in authentication. T: Compare object contents correctly. A: Replaced == with .equals() for string and object comparisons. R: Accurate credential validation.",
+            "sample_answer": "In Java, == is a reference comparison operator that checks if two variables point to the exact same memory location. The .equals() method compares the actual values or contents of two objects (such as Strings)."
+        },
+        {
+            "id": "q_tech_1",
+            "category": "Technical",
+            "domain": "Web Fundamentals",
+            "difficulty": "Junior",
+            "question": "What is an API?",
+            "hint": "Application Programming Interface, client-server communication, JSON data exchange.",
+            "star_guide": "S: Connecting frontend with backend. T: Enable data exchange. A: Built RESTful APIs returning structured JSON data. R: Seamless communication between client and server.",
+            "sample_answer": "An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate with each other. In web development, web APIs allow the frontend to request and receive data (such as JSON) from a backend server."
+        },
+        {
+            "id": "q_tech_2",
+            "category": "Technical",
+            "domain": "Web Fundamentals",
+            "difficulty": "Junior",
+            "question": "What is the difference between Frontend and Backend development?",
+            "hint": "Client-side (UI, HTML, CSS, JS) vs server-side (databases, server logic, APIs).",
+            "star_guide": "S: Designing full-stack architecture. T: Differentiate responsibilities. A: Assigned visual UI to frontend and databases and business logic to backend. R: Clear architecture and separation of concerns.",
+            "sample_answer": "Frontend development focuses on the client-side\u2014the visual user interface, layout, and user interactions built with HTML, CSS, and JavaScript. Backend development deals with the server-side\u2014managing business logic, authentication, APIs, and databases behind the scenes."
+        },
+        {
+            "id": "q_tech_3",
+            "category": "Technical",
+            "domain": "Web Fundamentals",
+            "difficulty": "Junior",
+            "question": "What is a Database and what is the difference between SQL and NoSQL?",
+            "hint": "Structured relational tables (SQL) vs flexible documents or key-values (NoSQL).",
+            "star_guide": "S: Selecting persistence layer. T: Model application data. A: Evaluated relational SQL (PostgreSQL) vs document NoSQL (MongoDB). R: Selected optimal database for schema requirements.",
+            "sample_answer": "A database is an organized system for storing and managing data. SQL databases (relational) store data in structured tables with fixed schemas and relationships (like MySQL or PostgreSQL). NoSQL databases (non-relational) store data in flexible documents, key-values, or graphs (like MongoDB or Redis)."
+        },
+        {
+            "id": "q_tech_4",
+            "category": "Technical",
+            "domain": "Web Fundamentals",
+            "difficulty": "Junior",
+            "question": "What is Git and why is it used in software development?",
+            "hint": "Distributed version control, tracking changes, branching, collaboration.",
+            "star_guide": "S: Working with multiple developers. T: Prevent code collisions. A: Utilized Git for version control, branching, and pull requests. R: Safe collaboration and complete code history.",
+            "sample_answer": "Git is a distributed version control system that tracks changes in source code files over time. It allows developers to collaborate, work on separate branches without breaking main code, and revert changes if bugs are discovered."
+        },
+        {
+            "id": "q_sd_1",
+            "category": "System Design",
+            "domain": "Web Fundamentals",
+            "difficulty": "Junior",
+            "question": "What is Client-Server Architecture?",
+            "hint": "Client requests service, Server processes and provides response.",
+            "star_guide": "S: Explaining network architecture. T: Outline system components. A: Clarified how browser clients communicate over HTTP with backend web servers. R: Clear system comprehension.",
+            "sample_answer": "Client-Server architecture is a distributed framework where the client (such as a web browser or mobile app) sends requests over a network, and the server processes the request and returns the requested data or resource."
+        },
+        {
+            "id": "q_sd_2",
+            "category": "System Design",
+            "domain": "Web Fundamentals",
+            "difficulty": "Junior",
+            "question": "What is Web Caching and why is it used?",
+            "hint": "Temporary storage of frequently requested data to reduce server load and latency.",
+            "star_guide": "S: Optimizing page load times. T: Reduce origin server bottlenecks. A: Configured browser and CDN caching for static assets. R: Decreased page load latency significantly.",
+            "sample_answer": "Web caching is the process of storing copies of web files or database query results in temporary storage (such as browser cache, CDN, or Redis) so that future requests can be served much faster without querying the origin server each time."
+        },
+        {
+            "id": "q_beh_1",
+            "category": "Behavioral",
+            "domain": "Leadership & Soft Skills",
+            "difficulty": "Junior",
+            "question": "Tell me about yourself and your journey in software development.",
+            "hint": "Summarize background, key programming skills learned, projects built, and current career focus.",
+            "star_guide": "S: Introducing candidate profile. T: Deliver concise professional summary. A: Highlighted technical passion, core languages mastered, and project achievements. R: Strong, authentic interview opening.",
+            "sample_answer": "Introduce your educational background, share what inspired you to learn programming, mention the key languages and tools you enjoy using (e.g. HTML, CSS, JavaScript, Python, or Java), and express your enthusiasm for building practical software applications."
+        },
+        {
+            "id": "q_beh_2",
+            "category": "Behavioral",
+            "domain": "Leadership & Soft Skills",
+            "difficulty": "Junior",
+            "question": "Describe a challenge you faced while working on a project and how you resolved it.",
+            "hint": "Use Situation, Task, Action, Result (STAR) framework.",
+            "star_guide": "S: Encountered unexpected technical roadblock. T: Diagnose and fix issue under deadline. A: Researched documentation, tested isolated components, and implemented fix. R: Shipped working feature on time.",
+            "sample_answer": "Describe the specific problem or bug you encountered (Situation/Task), the debugging steps and research you conducted to understand the root cause (Action), and the successful solution you implemented along with what you learned (Result)."
+        }
+    ]
+}

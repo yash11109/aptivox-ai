@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Portal - Aptivox AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <span>⚡ Aptivox AI</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/interview" class="nav-link">🎙️ AI Interview Room</a></li>
+                <li><a href="/practice" class="nav-link">📚 Question Bank</a></li>
+                <li><a href="/dashboard" class="nav-link">📊 Analytics</a></li>
+            </ul>
+            <div id="user-profile-btn" class="user-profile-btn"></div>
+        </div>
+    </nav>
+
+    <div class="container" style="max-width:480px; margin: 40px auto 60px;">
+        <!-- Back Navigation Button -->
+        <div style="margin-bottom: 20px;">
+            <a href="/" class="btn-back">← Back to Home</a>
+        </div>
+
+        <div class="card">
+            <div style="text-align:center; margin-bottom: 24px;">
+                <h2 id="auth-title">Welcome Back</h2>
+                <p id="auth-subtitle">Sign in to sync your interview progress across MongoDB & Firebase</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="login-email" class="form-input" placeholder="alex@example.com" value="demo@interview.ai" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="password-toggle-wrapper">
+                        <input type="password" id="login-password" class="form-input" placeholder="••••••••" value="password123" required>
+                        <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('login-password', this)" title="Toggle Password Visibility">👁️</button>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; margin-top:10px;">Sign In to Portal</button>
+            </form>
+
+            <!-- Register Form (Hidden by default) -->
+            <form id="register-form" style="display:none;">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="reg-name" class="form-input" placeholder="Alex Mercer" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="reg-email" class="form-input" placeholder="alex@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="password-toggle-wrapper">
+                        <input type="password" id="reg-password" class="form-input" placeholder="••••••••" required>
+                        <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('reg-password', this)" title="Toggle Password Visibility">👁️</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Target Job Role</label>
+                    <select id="reg-role" class="form-select">
+                        <option value="Full Stack Engineer">Full Stack Engineer</option>
+                        <option value="Frontend Developer">Frontend Developer</option>
+                        <option value="Backend / Systems Engineer">Backend / Systems Engineer</option>
+                        <option value="Data Scientist / AI Engineer">Data Scientist / AI Engineer</option>
+                        <option value="Product Manager">Product Manager</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; margin-top:10px;">Create Candidate Account</button>
+            </form>
+
+            <div style="text-align:center; margin-top: 24px; font-size: 0.9rem; color: var(--text-muted);">
+                <span id="toggle-text">Don't have an account yet?</span>
+                <a href="#" id="toggle-auth-btn" style="font-weight:600; margin-left: 6px;">Register Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        let isRegister = false;
+        const toggleBtn = document.getElementById('toggle-auth-btn');
+        const loginForm = document.getElementById('login-form');
+        const regForm = document.getElementById('register-form');
+        const authTitle = document.getElementById('auth-title');
+        const authSubtitle = document.getElementById('auth-subtitle');
+        const toggleText = document.getElementById('toggle-text');
+
+        toggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            isRegister = !isRegister;
+            if (isRegister) {
+                loginForm.style.display = 'none';
+                regForm.style.display = 'block';
+                authTitle.innerText = 'Create Account';
+                authSubtitle.innerText = 'Start practicing with custom AI interview feedback';
+                toggleText.innerText = 'Already have an account?';
+                toggleBtn.innerText = 'Sign In';
+            } else {
+                loginForm.style.display = 'block';
+                regForm.style.display = 'none';
+                authTitle.innerText = 'Welcome Back';
+                authSubtitle.innerText = 'Sign in to sync your interview progress across MongoDB & Firebase';
+                toggleText.innerText = "Don't have an account yet?";
+                toggleBtn.innerText = 'Register Now';
+            }
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('Successfully signed in!', 'success');
+                    setTimeout(() => window.location.href = '/dashboard', 1000);
+                } else {
+                    showToast(data.error || 'Login failed', 'error');
+                }
+            } catch (err) {
+                showToast('Authentication server error', 'error');
+            }
+        });
+
+        regForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const full_name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const target_role = document.getElementById('reg-role').value;
+
+            try {
+                const res = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ full_name, email, password, target_role })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('Account created successfully!', 'success');
+                    setTimeout(() => window.location.href = '/dashboard', 1000);
+                } else {
+                    showToast(data.error || 'Registration failed', 'error');
+                }
+            } catch (err) {
+                showToast('Registration server error', 'error');
+            }
+        });
+    </script>
+</body>
+</html>

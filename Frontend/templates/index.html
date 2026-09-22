@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptivox AI - Next-Gen Autonomous AI Technical Interview Platform</title>
+    <meta name="description"
+        content="Master your next technical interview with Aptivox AI: real-time voice and text mock interviews, instant STAR evaluation reports, and skill analytics.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <span>⚡ Aptivox AI</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/interview" class="nav-link">🎙️ AI Interview Room</a></li>
+                <li><a href="/practice" class="nav-link">📚 Question Bank</a></li>
+                <li><a href="/dashboard" class="nav-link">📊 Analytics</a></li>
+                <li><a href="/resume-analyzer" class="nav-link">📄 Resume Matcher</a></li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:16px;">
+                <div id="user-profile-btn" class="user-profile-btn">
+                    <div class="avatar">U</div>
+                    <span>Sign In</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-tag">✨ Next-Gen AI Voice & Technical Mock Interviewer</div>
+            <h1 class="hero-title">Practice Real Tech Interviews with <span class="gradient-text">Instant AI
+                    Feedback</span></h1>
+            <p class="hero-subtitle">Elevate your interview confidence with dynamic voice-guided AI mock sessions,
+                STAR-method evaluation, live score breakdown, and personalized improvement blueprints.</p>
+            <div class="hero-actions">
+                <a href="/interview" class="btn btn-primary" style="font-size:1.05rem; padding:14px 32px;">
+                    🎙️ Start AI Mock Interview Now
+                </a>
+                <a href="/practice" class="btn btn-secondary" style="font-size:1.05rem; padding:14px 32px;">
+                    📚 Explore Question Bank
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features Section -->
+    <section style="padding: 40px 0 80px;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <h2>Why Top Engineers Prepare With <span class="gradient-text">Aptivox AI</span></h2>
+                <p>Everything you need to master Technical, Behavioral, and System Design rounds.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3 style="margin-bottom:12px;">Real-Time Voice AI Interviewer</h3>
+                    <p>Experience realistic voice conversations powered by Web Speech API. The AI speaks questions
+                        naturally and transcribes your spoken answers live.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 style="margin-bottom:12px;">Instant AI Scoring & STAR Feedback</h3>
+                    <p>Receive comprehensive analysis after each response: numerical scores (0-10), highlighted
+                        strengths, key missing gaps, and ideal sample answers.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon">📊</div>
+                    <h3 style="margin-bottom:12px;">Competency Radar & Analytics</h3>
+                    <p>Track your technical depth, communication clarity, and system design readiness over time with
+                        interactive Chart.js competency visualizers.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon">📚</div>
+                    <h3 style="margin-bottom:12px;">Curated Practice Repository</h3>
+                    <p>Access hundreds of curated interview questions across Python, React, System Design, Algorithms,
+                        and Behavioral STAR scenarios with built-in hints.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon">📄</div>
+                    <h3 style="margin-bottom:12px;">AI Resume & Job Description Matcher</h3>
+                    <p>Upload your resume alongside any target Job Description to generate match percentages, missing
+                        technical keywords, and custom interview questions.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 style="margin-bottom:12px;">Dual MongoDB & Firebase Integration</h3>
+                    <p>Enterprise-ready database architecture supporting PyMongo, Firebase Firestore/Auth, and seamless
+                        local zero-config data fallback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
