@@ -7,7 +7,6 @@ let currentQuestionIndex = 0;
 let sessionScores = [];
 let isRecording = false;
 let recognition = null;
-let speechSynth = window.speechSynthesis;
 let questionTimer = null;
 let secondsElapsed = 0;
 
@@ -82,10 +81,6 @@ function bindInterviewEvents() {
         });
     }
 
-    const speakBtn = document.getElementById('speak-question-btn');
-    if (speakBtn) {
-        speakBtn.addEventListener('click', speakCurrentQuestion);
-    }
 }
 
 async function handleStartInterview(e) {
@@ -134,28 +129,6 @@ function loadQuestion(index) {
     // Update Progress Bar
     const percent = ((index + 1) / currentSession.questions.length) * 100;
     document.getElementById('progress-bar-fill').style.width = `${percent}%`;
-
-    // AI voice does NOT speak automatically when starting or changing questions.
-    // User can click 'Replay Voice' button if they wish to hear it.
-}
-
-function speakCurrentQuestion() {
-    if (!speechSynth || !currentSession) return;
-
-    speechSynth.cancel(); // Stop ongoing speech
-    const qText = currentSession.questions[currentQuestionIndex].question;
-    const utterance = new SpeechSynthesisUtterance(qText);
-    utterance.rate = 0.95;
-    utterance.pitch = 1.0;
-
-    const avatarRing = document.getElementById('ai-avatar-ring');
-    if (avatarRing) avatarRing.classList.add('speaking');
-
-    utterance.onend = () => {
-        if (avatarRing) avatarRing.classList.remove('speaking');
-    };
-
-    speechSynth.speak(utterance);
 }
 
 function toggleVoiceRecording() {
@@ -224,13 +197,18 @@ async function handleAnswerSubmission() {
 
             // Display Feedback Modal
             const scoreValEl = document.getElementById('modal-score-val');
-            scoreValEl.innerText = `${data.score} / 10`;
             if (data.score === 0 || data.is_wrong) {
-                scoreValEl.style.color = '#ef4444';
-                scoreValEl.style.textShadow = '0 0 25px rgba(239, 68, 68, 0.7)';
+                scoreValEl.className = 'score-badge-circle score-fail';
+                scoreValEl.innerHTML = `
+                    <span style="font-size:2.3rem; font-weight:800; line-height:1; color:#ffffff; text-shadow:0 2px 10px rgba(0,0,0,0.4);">0</span>
+                    <span style="font-size:0.85rem; font-weight:700; color:#fecaca; margin-top:3px; letter-spacing:0.5px;">/ 10</span>
+                `;
             } else {
-                scoreValEl.style.color = '#38bdf8'; // Vivid bright cyan for crystal-clear visibility
-                scoreValEl.style.textShadow = '0 0 25px rgba(56, 189, 248, 0.7)';
+                scoreValEl.className = 'score-badge-circle';
+                scoreValEl.innerHTML = `
+                    <span style="font-size:2.3rem; font-weight:800; line-height:1; color:#ffffff; text-shadow:0 2px 10px rgba(0,0,0,0.3);">${data.score}</span>
+                    <span style="font-size:0.85rem; font-weight:700; color:#e0f2fe; margin-top:3px; letter-spacing:0.5px;">/ 10</span>
+                `;
             }
             document.getElementById('modal-status-tag').innerText = data.status;
 

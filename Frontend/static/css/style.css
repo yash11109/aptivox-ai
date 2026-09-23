@@ -480,18 +480,28 @@ code, pre {
 }
 
 .score-badge-circle {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--success), var(--secondary));
+    background: radial-gradient(circle at 30% 30%, #06b6d4, #059669);
+    border: 3px solid rgba(56, 189, 248, 0.5);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #fff;
+    color: #ffffff;
     margin: 0 auto 16px;
-    box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 35px rgba(6, 182, 212, 0.35);
+    overflow: hidden;
+    text-align: center;
+    line-height: 1.15;
+    transition: all 0.3s ease;
+}
+
+.score-badge-circle.score-fail {
+    background: radial-gradient(circle at 30% 30%, #f87171, #991b1b);
+    border-color: rgba(239, 68, 68, 0.6);
+    box-shadow: 0 0 35px rgba(239, 68, 68, 0.45);
 }
 
 /* --- Form Controls --- */

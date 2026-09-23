@@ -663,7 +663,7 @@ def api_dashboard_stats():
     if not interviews:
         avg_score = 0.0
         completed_count = 0
-        total_practice_hours = 0.0
+        total_questions_count = 0
         prep_streak_days = 0
         skill_matrix = {
             "HTML & CSS": 0,
@@ -676,7 +676,9 @@ def api_dashboard_stats():
         scores = [i.get('score', 0.0) for i in interviews]
         avg_score = round(sum(scores) / max(1, len(scores)), 1)
         completed_count = len(interviews)
-        total_practice_hours = round(len(interviews) * 0.4, 1)
+        total_questions_count = sum([int(i.get('questions_count', 3)) for i in interviews])
+        if total_questions_count == 0:
+            total_questions_count = len(interviews) * 3
         prep_streak_days = min(7, len(interviews) + 1)
         skill_matrix = {
             "HTML & CSS": 85,
@@ -689,7 +691,7 @@ def api_dashboard_stats():
     data = {
         "average_score": avg_score,
         "completed_count": completed_count,
-        "total_practice_hours": total_practice_hours,
+        "total_questions_count": total_questions_count,
         "prep_streak_days": prep_streak_days,
         "skill_matrix": skill_matrix,
         "history": interviews

@@ -37,6 +37,9 @@ function renderSummaryCards(stats) {
     const countEl = document.getElementById('stat-completed-count');
     if (countEl) countEl.innerText = stats.completed_count;
 
+    const questionsEl = document.getElementById('stat-questions-count');
+    if (questionsEl) questionsEl.innerText = stats.total_questions_count !== undefined ? `${stats.total_questions_count}` : '0';
+
     const streakEl = document.getElementById('stat-streak');
     if (streakEl) streakEl.innerText = `${stats.prep_streak_days} Days`;
 }
